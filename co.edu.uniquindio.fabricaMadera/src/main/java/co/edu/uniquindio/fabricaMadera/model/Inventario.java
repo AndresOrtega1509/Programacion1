@@ -1,9 +1,11 @@
 package co.edu.uniquindio.fabricaMadera.model;
 
+import co.edu.uniquindio.fabricaMadera.model.enumeracion.Tamano;
+
 public class Inventario {
 
     private double longitud;
-    private String tamano;
+    private Tamano tamano;
     private double grosor;
     private int fechaRecepcion;
     private double peso;
@@ -13,7 +15,7 @@ public class Inventario {
     public Inventario() {
     }
 
-    public Inventario(double longitud, String tamano, double grosor, int fechaRecepcion, int peso) {
+    public Inventario(double longitud, Tamano tamano, double grosor, int fechaRecepcion, double peso) {
         this.longitud = longitud;
         this.tamano = tamano;
         this.grosor = grosor;
@@ -31,11 +33,11 @@ public class Inventario {
         this.longitud = longitud;
     }
 
-    public String getTamano() {
+    public Tamano getTamano() {
         return tamano;
     }
 
-    public void setTamano(String tamano) {
+    public void setTamano(Tamano tamano) {
         this.tamano = tamano;
     }
 
@@ -67,7 +69,7 @@ public class Inventario {
         String informacion = "";
         informacion = informacion +
                 "Longitud: " + getLongitud() + "\n" +
-                "Tamano: " + getTamano() + "\n" +
+                "Tamaño: " + getTamano() + "\n" +
                 "Grosor: " + getGrosor() + "\n" +
                 "FechaRecepcion: " + getFechaRecepcion() + "\n" +
                 "Peso: " + getPeso() + "\n";

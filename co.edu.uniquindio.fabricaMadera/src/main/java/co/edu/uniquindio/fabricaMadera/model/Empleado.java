@@ -1,9 +1,12 @@
 package co.edu.uniquindio.fabricaMadera.model;
 
+import co.edu.uniquindio.fabricaMadera.model.enumeracion.ApellidoEmpleado;
+import co.edu.uniquindio.fabricaMadera.model.enumeracion.NombreEmpleado;
+
 public class Empleado {
 
-    private String nombre;
-    private String apellido;
+    private NombreEmpleado nombre;
+    private ApellidoEmpleado apelldo;
     private int edad;
     private String cargo;
     private double salario;
@@ -13,9 +16,9 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(String nombre, String apellido, int edad, String cargo, double salario) {
+    public Empleado(NombreEmpleado nombre, ApellidoEmpleado apelldo, int edad, String cargo, double salario) {
         this.nombre = nombre;
-        this.apellido = apellido;
+        this.apelldo = apelldo;
         this.edad = edad;
         this.cargo = cargo;
         this.salario = salario;
@@ -23,20 +26,20 @@ public class Empleado {
 
     /* Getters and Setters */
 
-    public String getNombre() {
+    public NombreEmpleado getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(NombreEmpleado nombre) {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public ApellidoEmpleado getApelldo() {
+        return apelldo;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApelldo(ApellidoEmpleado apelldo) {
+        this.apelldo = apelldo;
     }
 
     public int getEdad() {
@@ -67,7 +70,7 @@ public class Empleado {
         String informacion = "";
         informacion = informacion +
                 "Nombre: " + getNombre() + "\n" +
-                "Apellido: " + getApellido() + "\n" +
+                "Apellido: " + getApelldo() + "\n" +
                 "Edad: " + getEdad() + "\n" +
                 "Cargo: " + getCargo() + "\n" +
                 "Salario: " + getSalario() + "\n";
@@ -76,8 +79,4 @@ public class Empleado {
 
     }
 
-
-
 }
-
-

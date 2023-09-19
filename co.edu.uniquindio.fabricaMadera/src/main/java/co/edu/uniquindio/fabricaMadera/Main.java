@@ -2,6 +2,9 @@ package co.edu.uniquindio.fabricaMadera;
 import co.edu.uniquindio.fabricaMadera.model.Inventario;
 import co.edu.uniquindio.fabricaMadera.model.Empleado;
 import co.edu.uniquindio.fabricaMadera.model.Fabrica;
+import co.edu.uniquindio.fabricaMadera.model.enumeracion.ApellidoEmpleado;
+import co.edu.uniquindio.fabricaMadera.model.enumeracion.NombreEmpleado;
+import co.edu.uniquindio.fabricaMadera.model.enumeracion.Tamano;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,21 +30,21 @@ public class Main {
         String troncoMenor = fabrica.obtenerTroncoMenorPeso();
 
         System.out.println("El tronco con menor peso es: " + troncoMenor);
-        
+
     }
 
     private static Fabrica inicializarDatosPrueba(){
 
-        Empleado empleado1 = crearEmpleado("Carlos", "Rodriguez", 18, "Auxiliar de producción", 1500000);
-        Empleado empleado2 = crearEmpleado("Ricardo", "Mendoza", 27, "Supervisor", 2500000);
-        Empleado empleado3 = crearEmpleado("Miguel", "Londoño", 30, "Gerente", 3500000);
-        Empleado empleado4 = crearEmpleado("Andrea", "Cardona", 25, "Coordinador", 2800000);
-        Empleado empleado5 = crearEmpleado("Sandra", "Perez", 43, "Auxiliar servicios generales", 1600000);
-        Inventario tronco1 = crearInventario(8.5, "Mediano", 3.2, 2023,50.2 );
-        Inventario tronco2 = crearInventario(5, "Pequeño", 1.6, 2022, 40.6);
-        Inventario tronco3 = crearInventario(12, "Grande", 5.3, 2023, 80.5);
-        Inventario tronco4 = crearInventario(7.2, "Mediano", 2.8, 2021, 48.1);
-        Inventario tronco5 = crearInventario(4.1, "Pequeño", 1.3, 2022, 36.7);
+        Empleado empleado1 = crearEmpleado(NombreEmpleado.CARLOS, ApellidoEmpleado.RODRIGUEZ, 18, "Auxiliar de producción", 1500000);
+        Empleado empleado2 = crearEmpleado(NombreEmpleado.RICARDO, ApellidoEmpleado.MENDOZA, 27, "Supervisor", 2500000);
+        Empleado empleado3 = crearEmpleado(NombreEmpleado.MIGUEL, ApellidoEmpleado.LONDOÑO, 30, "Gerente", 3500000);
+        Empleado empleado4 = crearEmpleado(NombreEmpleado.ANDREA, ApellidoEmpleado.CARDONA, 25, "Coordinador", 2800000);
+        Empleado empleado5 = crearEmpleado(NombreEmpleado.SANDRA, ApellidoEmpleado.PEREZ, 43, "Auxiliar servicios generales", 1600000);
+        Inventario tronco1 = crearInventario(8.5, Tamano.MEDIANO, 3.2, 2023,50.2 );
+        Inventario tronco2 = crearInventario(5, Tamano.PEQUEÑO, 1.6, 2022, 40.6);
+        Inventario tronco3 = crearInventario(12, Tamano.GRANDE, 5.3, 2023, 80.5);
+        Inventario tronco4 = crearInventario(7.2,Tamano.MEDIANO, 2.8, 2021, 48.1);
+        Inventario tronco5 = crearInventario(4.1, Tamano.PEQUEÑO, 1.3, 2022, 36.7);
         Fabrica fabrica = new Fabrica("Maderas del centro S.A.S", "Carrera 19 calle 14, Armenia");
         fabrica.setEmpleado1(empleado1);
         fabrica.setEmpleado2(empleado2);
@@ -57,12 +60,12 @@ public class Main {
         return fabrica;
     }
 
-    private static Empleado crearEmpleado(String nombre, String apellido, int edad, String cargo, double salario){
+    private static Empleado crearEmpleado(NombreEmpleado nombre, ApellidoEmpleado apellido, int edad, String cargo, double salario){
 
         Empleado empleado = new Empleado();
 
         empleado.setNombre(nombre);
-        empleado.setApellido(apellido);
+        empleado.setApelldo(apellido);
         empleado.setEdad(edad);
         empleado.setCargo(cargo);
         empleado.setSalario(salario);
@@ -70,7 +73,7 @@ public class Main {
         return empleado;
     }
 
-    private static Inventario crearInventario(double longitud, String tamano, double grosor, int fechaRecepcion, double peso){
+    private static Inventario crearInventario(double longitud, Tamano tamano, double grosor, int fechaRecepcion, double peso){
 
         Inventario inventario = new Inventario();
 
