@@ -7,7 +7,6 @@ public class Empleado {
     private int edad;
     private String cargo;
     private double salario;
-    private Empleado empleado;
 
     /* Constructor */
 
@@ -64,13 +63,21 @@ public class Empleado {
         this.salario = salario;
     }
 
-    public Empleado getEmpleado() {
-        return empleado;
+    public String obtenerInformacion(){
+        String informacion = "";
+        informacion = informacion +
+                "Nombre: " + getNombre() + "\n" +
+                "Apellido: " + getApellido() + "\n" +
+                "Edad: " + getEdad() + "\n" +
+                "Cargo: " + getCargo() + "\n" +
+                "Salario: " + getSalario() + "\n";
+
+        return informacion;
+
     }
 
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
-    }
+
+
 }
 
 

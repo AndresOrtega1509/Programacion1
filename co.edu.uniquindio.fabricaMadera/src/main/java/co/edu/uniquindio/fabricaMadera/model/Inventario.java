@@ -6,21 +6,19 @@ public class Inventario {
     private String tamano;
     private double grosor;
     private int fechaRecepcion;
-    private int cantidad;
-    private Inventario inventario;
-
+    private double peso;
 
     /* Constructor */
 
     public Inventario() {
     }
 
-    public Inventario(double longitud, String tamano, double grosor, int fechaRecepcion, int cantidad) {
+    public Inventario(double longitud, String tamano, double grosor, int fechaRecepcion, int peso) {
         this.longitud = longitud;
         this.tamano = tamano;
         this.grosor = grosor;
         this.fechaRecepcion = fechaRecepcion;
-        this.cantidad = cantidad;
+        this.peso = peso;
     }
 
     /* Getters and Setters */
@@ -57,19 +55,24 @@ public class Inventario {
         this.fechaRecepcion = fechaRecepcion;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public double getPeso() {
+        return peso;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setPeso(double peso) {
+        this.peso = peso;
     }
 
-    public Inventario getInventario() {
-        return inventario;
+    public String obtenerInformacionTronco4() {
+        String informacion = "";
+        informacion = informacion +
+                "Longitud: " + getLongitud() + "\n" +
+                "Tamano: " + getTamano() + "\n" +
+                "Grosor: " + getGrosor() + "\n" +
+                "FechaRecepcion: " + getFechaRecepcion() + "\n" +
+                "Peso: " + getPeso() + "\n";
+
+        return informacion;
     }
 
-    public void setInventario(Inventario inventario) {
-        this.inventario = inventario;
-    }
 }
