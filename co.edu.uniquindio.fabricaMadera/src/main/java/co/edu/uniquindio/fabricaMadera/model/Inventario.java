@@ -1,80 +1,66 @@
 package co.edu.uniquindio.fabricaMadera.model;
 
-import co.edu.uniquindio.fabricaMadera.model.enumeracion.Tamano;
+
 
 public class Inventario {
 
-    private double longitud;
-    private Tamano tamano;
-    private double grosor;
-    private int fechaRecepcion;
-    private double peso;
+    private String producto;
+    private int cantidad;
+    private String ubicacion;
+    private String responsable;
+    Fabrica ownedByFabrica;
 
     /* Constructor */
 
     public Inventario() {
     }
 
-    public Inventario(double longitud, Tamano tamano, double grosor, int fechaRecepcion, double peso) {
-        this.longitud = longitud;
-        this.tamano = tamano;
-        this.grosor = grosor;
-        this.fechaRecepcion = fechaRecepcion;
-        this.peso = peso;
+    public Inventario(String producto, int cantidad, String ubicacion, String responsable) {
+        this.producto = producto;
+        this.cantidad = cantidad;
+        this.ubicacion = ubicacion;
+        this.responsable = responsable;
     }
 
     /* Getters and Setters */
 
-    public double getLongitud() {
-        return longitud;
+    public String getProducto() {
+        return producto;
     }
 
-    public void setLongitud(double longitud) {
-        this.longitud = longitud;
+    public void setProducto(String producto) {
+        this.producto = producto;
     }
 
-    public Tamano getTamano() {
-        return tamano;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setTamano(Tamano tamano) {
-        this.tamano = tamano;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
-    public double getGrosor() {
-        return grosor;
+    public String getUbicacion() {
+        return ubicacion;
     }
 
-    public void setGrosor(double grosor) {
-        this.grosor = grosor;
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
-    public int getFechaRecepcion() {
-        return fechaRecepcion;
+    public String getResponsable() {
+        return responsable;
     }
 
-    public void setFechaRecepcion(int fechaRecepcion) {
-        this.fechaRecepcion = fechaRecepcion;
+    public void setResponsable(String responsable) {
+        this.responsable = responsable;
     }
 
-    public double getPeso() {
-        return peso;
+    public Fabrica getOwnedByFabrica() {
+        return ownedByFabrica;
     }
 
-    public void setPeso(double peso) {
-        this.peso = peso;
+    public void setOwnedByFabrica(Fabrica ownedByFabrica) {
+        this.ownedByFabrica = ownedByFabrica;
     }
-
-    public String obtenerInformacionTronco4() {
-        String informacion = "";
-        informacion = informacion +
-                "Longitud: " + getLongitud() + "\n" +
-                "Tamaño: " + getTamano() + "\n" +
-                "Grosor: " + getGrosor() + "\n" +
-                "FechaRecepcion: " + getFechaRecepcion() + "\n" +
-                "Peso: " + getPeso() + "\n";
-
-        return informacion;
-    }
-
 }

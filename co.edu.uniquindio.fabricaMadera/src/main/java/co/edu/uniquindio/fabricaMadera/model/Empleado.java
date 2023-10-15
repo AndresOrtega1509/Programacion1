@@ -6,20 +6,23 @@ import co.edu.uniquindio.fabricaMadera.model.enumeracion.NombreEmpleado;
 public class Empleado {
 
     private NombreEmpleado nombre;
-    private ApellidoEmpleado apelldo;
+    private ApellidoEmpleado apellido;
     private int edad;
+    private String cedula;
     private String cargo;
     private double salario;
+    Fabrica ownedByFabrica;
 
     /* Constructor */
 
     public Empleado() {
     }
 
-    public Empleado(NombreEmpleado nombre, ApellidoEmpleado apelldo, int edad, String cargo, double salario) {
+    public Empleado(NombreEmpleado nombre, ApellidoEmpleado apellido, int edad, String cedula, String cargo, double salario) {
         this.nombre = nombre;
-        this.apelldo = apelldo;
+        this.apellido = apellido;
         this.edad = edad;
+        this.cedula = cedula;
         this.cargo = cargo;
         this.salario = salario;
     }
@@ -34,12 +37,12 @@ public class Empleado {
         this.nombre = nombre;
     }
 
-    public ApellidoEmpleado getApelldo() {
-        return apelldo;
+    public ApellidoEmpleado getApellido() {
+        return apellido;
     }
 
-    public void setApelldo(ApellidoEmpleado apelldo) {
-        this.apelldo = apelldo;
+    public void setApellido(ApellidoEmpleado apelldo) {
+        this.apellido = apelldo;
     }
 
     public int getEdad() {
@@ -48,6 +51,14 @@ public class Empleado {
 
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
     public String getCargo() {
@@ -66,11 +77,19 @@ public class Empleado {
         this.salario = salario;
     }
 
+    public Fabrica getOwnedByFabrica() {
+        return ownedByFabrica;
+    }
+
+    public void setOwnedByFabrica(Fabrica ownedByFabrica) {
+        this.ownedByFabrica = ownedByFabrica;
+    }
+
     public String obtenerInformacion(){
         String informacion = "";
         informacion = informacion +
                 "Nombre: " + getNombre() + "\n" +
-                "Apellido: " + getApelldo() + "\n" +
+                "Apellido: " + getApellido() + "\n" +
                 "Edad: " + getEdad() + "\n" +
                 "Cargo: " + getCargo() + "\n" +
                 "Salario: " + getSalario() + "\n";
@@ -79,4 +98,15 @@ public class Empleado {
 
     }
 
+    @Override
+    public String toString() {
+        return "Empleado{" +
+                "nombre=" + nombre +
+                ", apellido=" + apellido +
+                ", edad=" + edad +
+                ", cedula='" + cedula + '\'' +
+                ", cargo='" + cargo + '\'' +
+                ", salario=" + salario +
+                '}';
+    }
 }

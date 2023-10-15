@@ -1,89 +1,59 @@
 package co.edu.uniquindio.fabricaMadera;
-import co.edu.uniquindio.fabricaMadera.model.Inventario;
 import co.edu.uniquindio.fabricaMadera.model.Empleado;
 import co.edu.uniquindio.fabricaMadera.model.Fabrica;
 import co.edu.uniquindio.fabricaMadera.model.enumeracion.ApellidoEmpleado;
 import co.edu.uniquindio.fabricaMadera.model.enumeracion.NombreEmpleado;
-import co.edu.uniquindio.fabricaMadera.model.enumeracion.Tamano;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
         Fabrica fabrica = inicializarDatosPrueba();
 
-        double salarioMayor = fabrica.obtenerSalarioMayor();
+       // double salarioMayor = fabrica.obtenerSalarioMayor();
 
-        System.out.println("El salario mayor es de: " + salarioMayor);
+       // System.out.println("El salario mayor es de: " + salarioMayor);
 
         int promedioEdad = fabrica.obtenerPromedioEdad();
 
         System.out.println("El promedio de edad de los empleados es de: " + promedioEdad);
 
-        fabrica.mostrarInformacionEmpleados();
 
-        int troncosFechaRecepcionReciente = fabrica.obtenerCantinadadTroncosMasRecientes();
+        crearEmpleado(NombreEmpleado.CARLOS, ApellidoEmpleado.RODRIGUEZ, 18, "1096493875","Auxiliar de producción" , 1500000, fabrica);
+        crearEmpleado(NombreEmpleado.RICARDO, ApellidoEmpleado.MENDOZA, 27, "1093983821","Supervisor" ,2500000, fabrica);
+        crearEmpleado(NombreEmpleado.MIGUEL, ApellidoEmpleado.LONDOÑO, 30, "1016870947","Gerente" ,3500000, fabrica);
+        crearEmpleado(NombreEmpleado.ANDREA, ApellidoEmpleado.CARDONA, 25, "1082748329","Coordinador" ,2800000, fabrica);
+        crearEmpleado(NombreEmpleado.SANDRA, ApellidoEmpleado.PEREZ, 43, "1016745323","Auxiliar servicios generales" ,1600000, fabrica);
 
-        System.out.println("la cantidad de troncos con fecha de recepción más recientes son: " + troncosFechaRecepcionReciente);
+        mostraInformacionEmpleado(fabrica);
 
-        fabrica.mostrarInformacionTronco4();
 
-        String troncoMenor = fabrica.obtenerTroncoMenorPeso();
-
-        System.out.println("El tronco con menor peso es: " + troncoMenor);
 
     }
 
-    private static Fabrica inicializarDatosPrueba(){
-
-        Empleado empleado1 = crearEmpleado(NombreEmpleado.CARLOS, ApellidoEmpleado.RODRIGUEZ, 18, "Auxiliar de producción", 1500000);
-        Empleado empleado2 = crearEmpleado(NombreEmpleado.RICARDO, ApellidoEmpleado.MENDOZA, 27, "Supervisor", 2500000);
-        Empleado empleado3 = crearEmpleado(NombreEmpleado.MIGUEL, ApellidoEmpleado.LONDOÑO, 30, "Gerente", 3500000);
-        Empleado empleado4 = crearEmpleado(NombreEmpleado.ANDREA, ApellidoEmpleado.CARDONA, 25, "Coordinador", 2800000);
-        Empleado empleado5 = crearEmpleado(NombreEmpleado.SANDRA, ApellidoEmpleado.PEREZ, 43, "Auxiliar servicios generales", 1600000);
-        Inventario tronco1 = crearInventario(8.5, Tamano.MEDIANO, 3.2, 2023,50.2 );
-        Inventario tronco2 = crearInventario(5, Tamano.PEQUEÑO, 1.6, 2022, 40.6);
-        Inventario tronco3 = crearInventario(12, Tamano.GRANDE, 5.3, 2023, 80.5);
-        Inventario tronco4 = crearInventario(7.2,Tamano.MEDIANO, 2.8, 2021, 48.1);
-        Inventario tronco5 = crearInventario(4.1, Tamano.PEQUEÑO, 1.3, 2022, 36.7);
-        Fabrica fabrica = new Fabrica("Maderas del centro S.A.S", "Carrera 19 calle 14, Armenia");
-        fabrica.setEmpleado1(empleado1);
-        fabrica.setEmpleado2(empleado2);
-        fabrica.setEmpleado3(empleado3);
-        fabrica.setEmpleado4(empleado4);
-        fabrica.setEmpleado5(empleado5);
-        fabrica.setTronco1(tronco1);
-        fabrica.setTronco2(tronco2);
-        fabrica.setTronco3(tronco3);
-        fabrica.setTronco4(tronco4);
-        fabrica.setTronco5(tronco5);
-
+    private static Fabrica inicializarDatosPrueba() {
+        Fabrica fabrica = new Fabrica();
+        fabrica.setNombre("Maderas del centro S.A.S");
+        fabrica.setDireccion("Carrera 19 calle 14, Armenia");
         return fabrica;
     }
 
-    private static Empleado crearEmpleado(NombreEmpleado nombre, ApellidoEmpleado apellido, int edad, String cargo, double salario){
+    private static void crearEmpleado(NombreEmpleado nombre,
+                                      ApellidoEmpleado apellido,
+                                      int edad, String cedula, String cargo, double salario,
+                                      Fabrica fabrica) {
 
-        Empleado empleado = new Empleado();
-
-        empleado.setNombre(nombre);
-        empleado.setApelldo(apellido);
-        empleado.setEdad(edad);
-        empleado.setCargo(cargo);
-        empleado.setSalario(salario);
-
-        return empleado;
+        fabrica.crearEmpleado(nombre, apellido, edad, cedula, cargo, salario);
     }
 
-    private static Inventario crearInventario(double longitud, Tamano tamano, double grosor, int fechaRecepcion, double peso){
+    private static void mostraInformacionEmpleado(Fabrica fabrica){
 
-        Inventario inventario = new Inventario();
-
-        inventario.setLongitud(longitud);
-        inventario.setTamano(tamano);
-        inventario.setGrosor(grosor);
-        inventario.setFechaRecepcion(fechaRecepcion);
-        inventario.setPeso(peso);
-
-        return inventario;
+        List<Empleado> listaEmpleados = fabrica.obtenerEmpleados();
+        int tamanoLista = listaEmpleados.size();
+        for (int i = 0; i < tamanoLista; i ++){
+            Empleado empleado = listaEmpleados.get(i);
+            System.out.println(empleado.toString());
+        }
     }
-
 }
