@@ -84,6 +84,15 @@ public class Fabrica {
         this.listaDistribucion = listaDistribucion;
     }
 
+    /**
+     * Metodo que permite crear un empleado
+     * @param nombre
+     * @param apellido
+     * @param edad
+     * @param cedula
+     * @param cargo
+     * @param salario
+     */
     public void crearEmpleado(NombreEmpleado nombre, ApellidoEmpleado apellido, int edad, String cedula, String cargo, double salario) {
 
         int resultadoBusqueda = devolverPosicionEmpleado(cedula);
@@ -103,10 +112,19 @@ public class Fabrica {
         }
     }
 
+    /**
+     * Metodo que permite obtener la lista de los empleados
+     * @return List<Empleado>
+     */
     public List<Empleado> obtenerEmpleados() {
         return getListaEmpleados();
     }
 
+    /**
+     * Metodo para verificar si el empleado ya esta creado de acuerdo a la cedula
+     * @param cedula
+     * @return int
+     */
     public int devolverPosicionEmpleado(String cedula) {
         int posicion = -1;
         boolean bandera = false;
@@ -119,6 +137,11 @@ public class Fabrica {
         return posicion;
     }
 
+    /**
+     * Metodo para obtener el promedio de edad de los empleados
+     * @return int
+     */
+
     public int obtenerPromedioEdad() {
 
         int sumaEdades = 0;
@@ -130,6 +153,11 @@ public class Fabrica {
 
 
     }
+
+    /**
+     * Metodo para obtener el salario mayor de los empleados
+     * @return double
+     */
 
     public double obtenerSalarioMayor() {
 
@@ -144,6 +172,11 @@ public class Fabrica {
         return salarioMayor;
     }
 
+    /**
+     * Metodo para obtener el producto de menor precio
+     * @return double
+     */
+
     public double obtenerProductoMenorPrecio(){
 
         double productoMenorPrecio = getListaProductos().get(0).getPrecio();
@@ -155,6 +188,13 @@ public class Fabrica {
         }
         return productoMenorPrecio;
     }
+
+    /**
+     * Metodo para crear un producto
+     * @param nombre
+     * @param idProducto
+     * @param precio
+     */
 
     public void crearProducto(String nombre, String idProducto, double precio) {
 
@@ -172,6 +212,12 @@ public class Fabrica {
         }
     }
 
+    /**
+     * Metodo para verificar si el producto ya esta creado de acuerdo al id
+     * @param idProducto
+     * @return int
+     */
+
     public int devolverPosicionProducto(String idProducto) {
         int posicion = -1;
         boolean bandera = false;
@@ -185,11 +231,23 @@ public class Fabrica {
 
     }
 
+    /**
+     * Metodo para mostrar la informacion del primer producto
+     */
+
     public void mostrarInformacionPrimerProducto(){
 
         Producto primerProducto =getListaProductos().get(0);
         System.out.println("Informacion del primer producto: " + primerProducto.obtenerInformacion());
     }
+
+    /**
+     * Metodo para crear el inventario
+     * @param producto
+     * @param cantidad
+     * @param ubicacion
+     * @param respobsable
+     */
 
     public void crearInventario(String producto,int cantidad, String ubicacion, String respobsable) {
 
@@ -202,6 +260,11 @@ public class Fabrica {
             System.out.println("Inventario creado exitosamente");
 
     }
+
+    /**
+     * Metodo para obtener el producto que cuenta con mayor cantidad de acuerdo al inventario
+     * @return String
+     */
 
     public String obtenerProductoMayorCantidad(){
 
