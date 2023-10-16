@@ -18,15 +18,12 @@ public class Main {
         crearEmpleado(NombreEmpleado.SANDRA, ApellidoEmpleado.PEREZ, 43, "1016745323","Auxiliar servicios generales" ,1600000, fabrica);
 
         int promedioEdad = fabrica.obtenerPromedioEdad();
-
         System.out.println("El promedio de edad de los empleados es de: " + promedioEdad);
 
         double salarioMayor = fabrica.obtenerSalarioMayor();
-
         System.out.println("El salario mayor es de: " + salarioMayor);
 
         System.out.println("Información de cada empleado: ");
-
         mostraInformacionEmpleado(fabrica);
 
         crearProducto("Mueble", "2809",1300000, fabrica);
@@ -36,12 +33,20 @@ public class Main {
         crearProducto("Viga", "4833", 60000, fabrica);
 
         double productoPrecioMenor = fabrica.obtenerProductoMenorPrecio();
-
         System.out.println("El producto con el precio más bajo es de: " + productoPrecioMenor);
 
+        fabrica.mostrarInformacionPrimerProducto();
+
+        crearInventario("Mueble", 48, "Almacen de comercialización", "", fabrica);
+        crearInventario("Puerta", 114, "Almacen de materias prima", "", fabrica);
+        crearInventario("Mesa", 85, "Almacen de comercialización", "", fabrica);
+        crearInventario("Silla", 164, "Almacen de materias prima", "", fabrica);
+        crearInventario("Viga", 253, "Almacen de materias prima", "", fabrica);
+
+        String productoMayorCantidad = fabrica.obtenerProductoMayorCantidad();
+        System.out.println("El producto con mayor cantidad en el inventario es: " + productoMayorCantidad);
 
     }
-
 
     private static Fabrica inicializarDatosPrueba() {
         Fabrica fabrica = new Fabrica();
@@ -60,6 +65,10 @@ public class Main {
                                       Fabrica fabrica) {
 
         fabrica.crearEmpleado(nombre, apellido, edad, cedula, cargo, salario);
+    }
+
+    private static void crearInventario(String producto, int cantidad, String ubicacion, String respobsable, Fabrica fabrica) {
+        fabrica.crearInventario(producto,cantidad,ubicacion,respobsable);
     }
 
     private static void mostraInformacionEmpleado(Fabrica fabrica){

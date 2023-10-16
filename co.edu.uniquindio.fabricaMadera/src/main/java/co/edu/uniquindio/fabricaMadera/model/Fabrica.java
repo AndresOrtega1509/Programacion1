@@ -172,7 +172,7 @@ public class Fabrica {
         }
     }
 
-    private int devolverPosicionProducto(String idProducto) {
+    public int devolverPosicionProducto(String idProducto) {
         int posicion = -1;
         boolean bandera = false;
         for (int i = 0; i < listaProductos.size() && bandera == false; i++) {
@@ -184,4 +184,38 @@ public class Fabrica {
         return posicion;
 
     }
+
+    public void mostrarInformacionPrimerProducto(){
+
+        Producto primerProducto =getListaProductos().get(0);
+        System.out.println("Informacion del primer producto: " + primerProducto.obtenerInformacion());
+    }
+
+    public void crearInventario(String producto,int cantidad, String ubicacion, String respobsable) {
+
+            Inventario inventario = new Inventario();
+            inventario.setProducto(producto);
+            inventario.setCantidad(cantidad);
+            inventario.setUbicacion(ubicacion);
+            inventario.setResponsable(respobsable);
+            getListaInventario().add(inventario);
+            System.out.println("Inventario creado exitosamente");
+
+    }
+
+    public String obtenerProductoMayorCantidad(){
+
+        int cantidadMayor = listaInventario.get(0).getCantidad();
+        String productoMayor = "";
+
+        for (Inventario inventario : getListaInventario()) {
+            if (inventario.getCantidad() > cantidadMayor) {
+                cantidadMayor = inventario.getCantidad();
+                productoMayor = inventario.getProducto();
+            }
+        }
+
+        return productoMayor;
+    }
+
 }

@@ -56,8 +56,8 @@ public class Producto {
         String informacion = "";
         informacion = informacion +
                 "Nombre: " + getNombre() + "\n" +
-                "Apellido: " + getIdProducto() + "\n" +
-                "Edad: " + getPrecio() + "\n";
+                "idProducto: " + getIdProducto() + "\n" +
+                "Precio: " + getPrecio() + "\n";
 
         return informacion;
 
