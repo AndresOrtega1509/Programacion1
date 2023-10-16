@@ -37,11 +37,11 @@ public class Main {
 
         fabrica.mostrarInformacionPrimerProducto();
 
-        crearInventario("Mueble", 48, "Almacen de comercialización", "", fabrica);
-        crearInventario("Puerta", 114, "Almacen de materias prima", "", fabrica);
-        crearInventario("Mesa", 85, "Almacen de comercialización", "", fabrica);
-        crearInventario("Silla", 164, "Almacen de materias prima", "", fabrica);
-        crearInventario("Viga", 253, "Almacen de materias prima", "", fabrica);
+        crearInventario("Mueble", 48, "Almacen de comercialización", "Santiago Ramirez", fabrica);
+        crearInventario("Puerta", 114, "Almacen de materias prima", "Sofia Sanchez", fabrica);
+        crearInventario("Mesa", 85, "Almacen de comercialización", "Laura Martinez", fabrica);
+        crearInventario("Silla", 164, "Almacen de materias prima", "Martin Lopez", fabrica);
+        crearInventario("Viga", 253, "Almacen de materias prima", "Ana Ortega", fabrica);
 
         String productoMayorCantidad = fabrica.obtenerProductoMayorCantidad();
         System.out.println("El producto con mayor cantidad en el inventario es: " + productoMayorCantidad);
