@@ -51,6 +51,26 @@ public class Producto {
     public void setOwnedByFabrica(Fabrica ownedByFabrica) {
         this.ownedByFabrica = ownedByFabrica;
     }
+
+    public String obtenerInformacion(){
+        String informacion = "";
+        informacion = informacion +
+                "Nombre: " + getNombre() + "\n" +
+                "Apellido: " + getIdProducto() + "\n" +
+                "Edad: " + getPrecio() + "\n";
+
+        return informacion;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "nombre='" + nombre + '\'' +
+                ", idProducto='" + idProducto + '\'' +
+                ", precio=" + precio +
+                '}';
+    }
 }
 
 

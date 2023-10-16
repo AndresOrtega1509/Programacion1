@@ -126,7 +126,62 @@ public class Fabrica {
         for (Empleado empleado : listaEmpleados) {
             sumaEdades += empleado.getEdad();
         }
-        return sumaEdades / listaEmpleados.size();
+        return sumaEdades / getListaEmpleados().size();
+
+
+    }
+
+    public double obtenerSalarioMayor() {
+
+        double salarioMayor = getListaEmpleados().get(0).getSalario();
+
+        for (int i = 0; i < getListaEmpleados().size(); i++){
+            if (getListaEmpleados().get(i).getSalario() > salarioMayor){
+                salarioMayor = getListaEmpleados().get(i).getSalario();
+
+            }
+        }
+        return salarioMayor;
+    }
+
+    public double obtenerProductoMenorPrecio(){
+
+        double productoMenorPrecio = getListaProductos().get(0).getPrecio();
+
+        for (int i = 0; i < getListaProductos().size(); i++){
+            if (getListaProductos().get(i).getPrecio() < productoMenorPrecio){
+                productoMenorPrecio = getListaProductos().get(i).getPrecio();
+            }
+        }
+        return productoMenorPrecio;
+    }
+
+    public void crearProducto(String nombre, String idProducto, double precio) {
+
+        int resultadoBusqueda = devolverPosicionProducto(idProducto);
+        if (resultadoBusqueda == -1) {
+            Producto producto = new Producto();
+            producto.setNombre(nombre);
+            producto.setIdProducto(idProducto);
+            producto.setPrecio(precio);
+            getListaProductos().add(producto);
+            System.out.println("Producto creado exitosamente");
+
+        } else {
+            System.out.println("El producto ya esta creado en el sistema");
+        }
+    }
+
+    private int devolverPosicionProducto(String idProducto) {
+        int posicion = -1;
+        boolean bandera = false;
+        for (int i = 0; i < listaProductos.size() && bandera == false; i++) {
+            if (listaProductos.get(i).getIdProducto().equalsIgnoreCase(idProducto)) {
+                bandera = true;
+                posicion = i;
+            }
+        }
+        return posicion;
 
     }
 }

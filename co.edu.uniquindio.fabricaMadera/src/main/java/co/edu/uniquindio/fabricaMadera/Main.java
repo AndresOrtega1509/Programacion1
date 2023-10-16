@@ -11,32 +11,47 @@ public class Main {
 
         Fabrica fabrica = inicializarDatosPrueba();
 
-       // double salarioMayor = fabrica.obtenerSalarioMayor();
-
-       // System.out.println("El salario mayor es de: " + salarioMayor);
-
-        int promedioEdad = fabrica.obtenerPromedioEdad();
-
-        System.out.println("El promedio de edad de los empleados es de: " + promedioEdad);
-
-
         crearEmpleado(NombreEmpleado.CARLOS, ApellidoEmpleado.RODRIGUEZ, 18, "1096493875","Auxiliar de producción" , 1500000, fabrica);
         crearEmpleado(NombreEmpleado.RICARDO, ApellidoEmpleado.MENDOZA, 27, "1093983821","Supervisor" ,2500000, fabrica);
         crearEmpleado(NombreEmpleado.MIGUEL, ApellidoEmpleado.LONDOÑO, 30, "1016870947","Gerente" ,3500000, fabrica);
         crearEmpleado(NombreEmpleado.ANDREA, ApellidoEmpleado.CARDONA, 25, "1082748329","Coordinador" ,2800000, fabrica);
         crearEmpleado(NombreEmpleado.SANDRA, ApellidoEmpleado.PEREZ, 43, "1016745323","Auxiliar servicios generales" ,1600000, fabrica);
 
+        int promedioEdad = fabrica.obtenerPromedioEdad();
+
+        System.out.println("El promedio de edad de los empleados es de: " + promedioEdad);
+
+        double salarioMayor = fabrica.obtenerSalarioMayor();
+
+        System.out.println("El salario mayor es de: " + salarioMayor);
+
+        System.out.println("Información de cada empleado: ");
+
         mostraInformacionEmpleado(fabrica);
 
+        crearProducto("Mueble", "2809",1300000, fabrica);
+        crearProducto("Puerta", "3201", 560000, fabrica);
+        crearProducto("Mesa", "8403", 420000, fabrica);
+        crearProducto("Silla", "7603", 70000, fabrica);
+        crearProducto("Viga", "4833", 60000, fabrica);
+
+        double productoPrecioMenor = fabrica.obtenerProductoMenorPrecio();
+
+        System.out.println("El producto con el precio más bajo es de: " + productoPrecioMenor);
 
 
     }
+
 
     private static Fabrica inicializarDatosPrueba() {
         Fabrica fabrica = new Fabrica();
         fabrica.setNombre("Maderas del centro S.A.S");
         fabrica.setDireccion("Carrera 19 calle 14, Armenia");
         return fabrica;
+    }
+
+    private static void crearProducto(String nombre, String idProducto, double precio, Fabrica fabrica) {
+        fabrica.crearProducto(nombre, idProducto, precio);
     }
 
     private static void crearEmpleado(NombreEmpleado nombre,
@@ -53,7 +68,7 @@ public class Main {
         int tamanoLista = listaEmpleados.size();
         for (int i = 0; i < tamanoLista; i ++){
             Empleado empleado = listaEmpleados.get(i);
-            System.out.println(empleado.toString());
+            System.out.println(empleado.obtenerInformacion());
         }
     }
 }
