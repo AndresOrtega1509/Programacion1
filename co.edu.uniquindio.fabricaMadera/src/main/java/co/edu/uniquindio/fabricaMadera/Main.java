@@ -67,8 +67,8 @@ public class Main {
         fabrica.crearEmpleado(nombre, apellido, edad, cedula, cargo, salario);
     }
 
-    private static void crearInventario(String producto, int cantidad, String ubicacion, String respobsable, Fabrica fabrica) {
-        fabrica.crearInventario(producto,cantidad,ubicacion,respobsable);
+    private static void crearInventario(String producto, int cantidad, String ubicacion, String responsable, Fabrica fabrica) {
+        fabrica.crearInventario(producto,cantidad,ubicacion,responsable);
     }
 
     private static void mostraInformacionEmpleado(Fabrica fabrica){

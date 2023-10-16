@@ -246,19 +246,17 @@ public class Fabrica {
      * @param producto
      * @param cantidad
      * @param ubicacion
-     * @param respobsable
+     * @param responsable
      */
 
-    public void crearInventario(String producto,int cantidad, String ubicacion, String respobsable) {
+    public void crearInventario(String producto,int cantidad, String ubicacion, String responsable) {
 
             Inventario inventario = new Inventario();
             inventario.setProducto(producto);
             inventario.setCantidad(cantidad);
             inventario.setUbicacion(ubicacion);
-            inventario.setResponsable(respobsable);
+            inventario.setResponsable(responsable);
             getListaInventario().add(inventario);
-            System.out.println("Inventario creado exitosamente");
-
     }
 
     /**
