@@ -279,4 +279,53 @@ public class Fabrica {
         return productoMayor;
     }
 
+    /**
+     * Metodo para actualizar un producto
+     * @param idProducto
+     * @param nuevoNombre
+     * @param nuevoPrecio
+     */
+    public void actualizarProducto(String idProducto, String nuevoNombre, double nuevoPrecio) {
+        for (Producto producto : listaProductos){
+            if (producto.getIdProducto().equals(idProducto)){
+                producto.setNombre(nuevoNombre);
+                producto.setPrecio(nuevoPrecio);
+                break;
+            }
+        }
+    }
+
+    /**
+     * Metodo para obtener la lista de los productos
+     * @return List<Producto>
+     */
+    public List<Producto> obteneProductos() {
+        return getListaProductos();
+    }
+
+    /**
+     * Metodo para mostrar los productos de la lista
+     */
+    public void mostrarProductos(){
+        List<Producto> listaProductos = obteneProductos();
+        int tamanoLista = listaProductos.size();
+        for (int i=0; i < tamanoLista; i++){
+            Producto producto = listaProductos.get(i);
+            System.out.println(producto.toString());
+        }
+    }
+
+    /**
+     * Metodo para eliminar un producto
+     * @param idProducto
+     */
+    public void eliminarProducto(String idProducto) {
+
+        for (Producto producto : listaProductos){
+            if (producto.getIdProducto().equalsIgnoreCase(idProducto)){
+                getListaProductos().remove(producto);
+                break;
+            }
+        }
+    }
 }

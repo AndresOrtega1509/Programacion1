@@ -1,6 +1,7 @@
 package co.edu.uniquindio.fabricaMadera;
 import co.edu.uniquindio.fabricaMadera.model.Empleado;
 import co.edu.uniquindio.fabricaMadera.model.Fabrica;
+import co.edu.uniquindio.fabricaMadera.model.Producto;
 import co.edu.uniquindio.fabricaMadera.model.enumeracion.ApellidoEmpleado;
 import co.edu.uniquindio.fabricaMadera.model.enumeracion.NombreEmpleado;
 
@@ -26,11 +27,28 @@ public class Main {
         System.out.println("Información de cada empleado: ");
         mostraInformacionEmpleado(fabrica);
 
+        //Crud producto
+
+        //create
         crearProducto("Mueble", "2809",1300000, fabrica);
         crearProducto("Puerta", "3201", 560000, fabrica);
         crearProducto("Mesa", "8403", 420000, fabrica);
         crearProducto("Silla", "7603", 70000, fabrica);
         crearProducto("Viga", "4833", 60000, fabrica);
+
+        //Read
+        System.out.println("Información productos:");
+        mostrarInformacionProductos(fabrica);
+
+        //Delate
+        eliminarProducto("3201", fabrica);
+        System.out.println("-----> Información luego de eliminar");
+        mostrarInformacionProductos(fabrica);
+
+        //Update
+        actualizarProducto("2809", "escritorio",920000, fabrica);
+        System.out.println("-----> Informacion luego de actualizar: ");
+        mostrarInformacionProductos(fabrica);
 
         double productoPrecioMenor = fabrica.obtenerProductoMenorPrecio();
         System.out.println("El producto con el precio más bajo es de: " + productoPrecioMenor);
@@ -57,6 +75,25 @@ public class Main {
 
     private static void crearProducto(String nombre, String idProducto, double precio, Fabrica fabrica) {
         fabrica.crearProducto(nombre, idProducto, precio);
+    }
+
+    private static void eliminarProducto(String idProducto, Fabrica fabrica) {
+
+        fabrica.eliminarProducto(idProducto);
+    }
+
+    private static void mostrarInformacionProductos(Fabrica fabrica) {
+
+        List<Producto> listaProductos = fabrica.obteneProductos();
+        int tamanoLista = listaProductos.size();
+        for (int i=0; i < tamanoLista; i++){
+            Producto producto = listaProductos.get(i);
+            System.out.println(producto.toString());
+        }
+    }
+
+    private static void actualizarProducto(String idProducto, String nuevoNombre, double nuevoPrecio,Fabrica fabrica) {
+        fabrica.actualizarProducto(idProducto, nuevoNombre, nuevoPrecio);
     }
 
     private static void crearEmpleado(NombreEmpleado nombre,
