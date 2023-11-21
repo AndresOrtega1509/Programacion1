@@ -12,11 +12,28 @@ public class Main {
 
         Fabrica fabrica = inicializarDatosPrueba();
 
-        crearEmpleado(NombreEmpleado.CARLOS, ApellidoEmpleado.RODRIGUEZ, 18, "1096493875","Auxiliar de producción" , 1500000, fabrica);
-        crearEmpleado(NombreEmpleado.RICARDO, ApellidoEmpleado.MENDOZA, 27, "1093983821","Supervisor" ,2500000, fabrica);
-        crearEmpleado(NombreEmpleado.MIGUEL, ApellidoEmpleado.LONDOÑO, 30, "1016870947","Gerente" ,3500000, fabrica);
-        crearEmpleado(NombreEmpleado.ANDREA, ApellidoEmpleado.CARDONA, 25, "1082748329","Coordinador" ,2800000, fabrica);
-        crearEmpleado(NombreEmpleado.SANDRA, ApellidoEmpleado.PEREZ, 43, "1016745323","Auxiliar servicios generales" ,1600000, fabrica);
+        //Crud empleado
+
+        //Create
+        crearEmpleado("Carlos", "Rodriguez", 18, "1096493875","rodriguez@gmail.com","Auxiliar de producción" , 150000, fabrica);
+        crearEmpleado("Ricardo", "Mendoza", 27, "1093983821", "ricardo@hotmail.com","Supervisor" ,250000, fabrica);
+        crearEmpleado("Miguel", "Londoño", 30, "1016870947","miguel@hotmail.com" ,"Gerente" ,350000, fabrica);
+        crearEmpleado("Andrea", "Cardona", 25, "1082748329","andrea@gmail.com" ,"Coordinador" ,280000, fabrica);
+        crearEmpleado("Sandra", "Perez", 43, "1016745323", "sandra@hotmail.com","Auxiliar servicios generales" ,160000, fabrica);
+
+        //Read
+        System.out.println("Información empleados:");
+        mostrarInformacionEmpleados(fabrica);
+
+        //Delate
+        eliminarEmpleado("1082748329", fabrica);
+        System.out.println("-----> Información luego de eliminar");
+        mostrarInformacionEmpleados(fabrica);
+
+        //Update
+        actualizarEmpleado("1016745323", "Esteban","Botina", 20 , "esteban@uqvirtual.edu.co","Coordinador" , 1400000, fabrica);
+        System.out.println("-----> Informacion luego de actualizar: ");
+        mostrarInformacionProductos(fabrica);
 
         int promedioEdad = fabrica.obtenerPromedioEdad();
         System.out.println("El promedio de edad de los empleados es de: " + promedioEdad);
@@ -28,6 +45,9 @@ public class Main {
         mostraInformacionEmpleado(fabrica);
 
         //Crud producto
+        eliminarProducto("3201", fabrica);
+        System.out.println("-----> Información luego de eliminar");
+        mostrarInformacionProductos(fabrica);
 
         //create
         crearProducto("Mueble", "2809",1300000, fabrica);
@@ -66,6 +86,16 @@ public class Main {
 
     }
 
+    private static void mostrarInformacionEmpleados(Fabrica fabrica) {
+
+        List<Empleado> listaEmpleados = fabrica.obtenerEmpleados();
+        int tamanoLista = listaEmpleados.size();
+        for (int i=0; i < tamanoLista; i++){
+            Empleado empleado = listaEmpleados.get(i);
+            System.out.println(empleado.toString());
+        }
+    }
+
     private static Fabrica inicializarDatosPrueba() {
         Fabrica fabrica = new Fabrica();
         fabrica.setNombre("Maderas del centro S.A.S");
@@ -96,12 +126,12 @@ public class Main {
         fabrica.actualizarProducto(idProducto, nuevoNombre, nuevoPrecio);
     }
 
-    private static void crearEmpleado(NombreEmpleado nombre,
-                                      ApellidoEmpleado apellido,
-                                      int edad, String cedula, String cargo, double salario,
+    private static void crearEmpleado(String nombre,
+                                      String apellido,
+                                      int edad, String cedula, String email,String cargo, double salario,
                                       Fabrica fabrica) {
 
-        fabrica.crearEmpleado(nombre, apellido, edad, cedula, cargo, salario);
+        fabrica.crearEmpleado(nombre, apellido, edad, cedula, email,cargo, salario);
     }
 
     private static void crearInventario(String producto, int cantidad, String ubicacion, String responsable, Fabrica fabrica) {
@@ -116,5 +146,14 @@ public class Main {
             Empleado empleado = listaEmpleados.get(i);
             System.out.println(empleado.obtenerInformacion());
         }
+    }
+
+    private static void eliminarEmpleado(String cedula, Fabrica fabrica) {
+
+        fabrica.eliminarEmpleado(cedula);
+    }
+
+    private static void actualizarEmpleado(String cedula, String nombre, String apellido, int edad, String email,String cargo, double salario, Fabrica fabrica) {
+        fabrica.actualizarEmpleado(cedula, nombre, apellido, edad, email ,cargo, salario);
     }
 }

@@ -93,7 +93,7 @@ public class Fabrica {
      * @param cargo
      * @param salario
      */
-    public void crearEmpleado(NombreEmpleado nombre, ApellidoEmpleado apellido, int edad, String cedula, String cargo, double salario) {
+    public void crearEmpleado(String nombre, String apellido, int edad, String cedula, String email,String cargo, double salario) {
 
         int resultadoBusqueda = devolverPosicionEmpleado(cedula);
         if (resultadoBusqueda == -1) {
@@ -102,6 +102,7 @@ public class Fabrica {
             empleado.setApellido(apellido);
             empleado.setEdad(edad);
             empleado.setCedula(cedula);
+            empleado.setEmail(email);
             empleado.setCargo(cargo);
             empleado.setSalario(salario);
             getListaEmpleados().add(empleado);
@@ -326,6 +327,39 @@ public class Fabrica {
                 getListaProductos().remove(producto);
                 break;
             }
+        }
+    }
+
+    public void eliminarEmpleado(String cedula) {
+
+        for (Empleado empleado : listaEmpleados){
+            if (empleado.getCedula().equalsIgnoreCase(cedula)){
+                getListaEmpleados().remove(empleado);
+                break;
+            }
+        }
+    }
+
+    public void actualizarEmpleado(String cedula, String nombre, String apellido, int edad,String email, String cargo, double salario) {
+        for (Empleado empleado : listaEmpleados){
+            if (empleado.getCedula().equalsIgnoreCase(cedula)){
+                empleado.setNombre(nombre);
+                empleado.setApellido(apellido);
+                empleado.setEdad(edad);
+                empleado.setEmail(email);
+                empleado.setCargo(cargo);
+                empleado.setSalario(salario);
+                break;
+            }
+        }
+    }
+
+    public void mostrarEmpleados(){
+        List<Empleado> listaEmpleados = obtenerEmpleados();
+        int tamanoLista = listaEmpleados.size();
+        for (int i=0; i < tamanoLista; i++){
+            Empleado empleado = listaEmpleados.get(i);
+            System.out.println(empleado.toString());
         }
     }
 }
