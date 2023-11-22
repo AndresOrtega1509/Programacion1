@@ -2,8 +2,7 @@ package co.edu.uniquindio.fabricaMadera;
 import co.edu.uniquindio.fabricaMadera.model.Empleado;
 import co.edu.uniquindio.fabricaMadera.model.Fabrica;
 import co.edu.uniquindio.fabricaMadera.model.Producto;
-import co.edu.uniquindio.fabricaMadera.model.enumeracion.ApellidoEmpleado;
-import co.edu.uniquindio.fabricaMadera.model.enumeracion.NombreEmpleado;
+import co.edu.uniquindio.fabricaMadera.model.enumeracion.TipoProducto;
 
 import java.util.List;
 
@@ -50,11 +49,11 @@ public class Main {
         mostrarInformacionProductos(fabrica);
 
         //create
-        crearProducto("Mueble", "2809",1300000, fabrica);
-        crearProducto("Puerta", "3201", 560000, fabrica);
-        crearProducto("Mesa", "8403", 420000, fabrica);
-        crearProducto("Silla", "7603", 70000, fabrica);
-        crearProducto("Viga", "4833", 60000, fabrica);
+        crearProducto(TipoProducto.MUEBLE, "2809",1300000, fabrica);
+        crearProducto(TipoProducto.PUERTA, "3201", 560000, fabrica);
+        crearProducto(TipoProducto.MESA, "8403", 420000, fabrica);
+        crearProducto(TipoProducto.SILLA, "7603", 70000, fabrica);
+        crearProducto(TipoProducto.VIGA, "4833", 60000, fabrica);
 
         //Read
         System.out.println("Información productos:");
@@ -66,7 +65,7 @@ public class Main {
         mostrarInformacionProductos(fabrica);
 
         //Update
-        actualizarProducto("2809", "escritorio",920000, fabrica);
+        actualizarProducto("2809", TipoProducto.ESCRITORIO,920000, fabrica);
         System.out.println("-----> Informacion luego de actualizar: ");
         mostrarInformacionProductos(fabrica);
 
@@ -92,7 +91,7 @@ public class Main {
         int tamanoLista = listaEmpleados.size();
         for (int i=0; i < tamanoLista; i++){
             Empleado empleado = listaEmpleados.get(i);
-            System.out.println(empleado.toString());
+            System.out.println(empleado.obtenerInformacion());
         }
     }
 
@@ -103,8 +102,8 @@ public class Main {
         return fabrica;
     }
 
-    private static void crearProducto(String nombre, String idProducto, double precio, Fabrica fabrica) {
-        fabrica.crearProducto(nombre, idProducto, precio);
+    private static void crearProducto(TipoProducto tipoProducto, String idProducto, double precio, Fabrica fabrica) {
+        fabrica.crearProducto(tipoProducto, idProducto, precio);
     }
 
     private static void eliminarProducto(String idProducto, Fabrica fabrica) {
@@ -122,8 +121,8 @@ public class Main {
         }
     }
 
-    private static void actualizarProducto(String idProducto, String nuevoNombre, double nuevoPrecio,Fabrica fabrica) {
-        fabrica.actualizarProducto(idProducto, nuevoNombre, nuevoPrecio);
+    private static void actualizarProducto(String idProducto, TipoProducto nuevoProducto, double nuevoPrecio,Fabrica fabrica) {
+        fabrica.actualizarProducto(idProducto, nuevoProducto, nuevoPrecio);
     }
 
     private static void crearEmpleado(String nombre,

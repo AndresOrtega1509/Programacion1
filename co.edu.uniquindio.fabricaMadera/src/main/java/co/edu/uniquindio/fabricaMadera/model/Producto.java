@@ -1,10 +1,13 @@
 package co.edu.uniquindio.fabricaMadera.model;
 
+import co.edu.uniquindio.fabricaMadera.model.enumeracion.TipoProducto;
+
 public class Producto {
 
-    private String nombre;
+    private TipoProducto tipoProducto;
     private String idProducto;
     private double precio;
+    Inventario inventarioAsociado;
     Fabrica ownedByFabrica;
 
     /*Constructor*/
@@ -12,20 +15,20 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(String nombre, String idProducto, double precio) {
-        this.nombre = nombre;
+    public Producto(TipoProducto tipoProducto, String idProducto, double precio) {
+        this.tipoProducto = tipoProducto;
         this.idProducto = idProducto;
         this.precio = precio;
     }
 
     /*Getters and setters*/
 
-    public String getNombre() {
-        return nombre;
+    public TipoProducto getTipoProducto() {
+        return tipoProducto;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTipoProducto(TipoProducto tipoProducto) {
+        this.tipoProducto = tipoProducto;
     }
 
     public String getIdProducto() {
@@ -52,10 +55,18 @@ public class Producto {
         this.ownedByFabrica = ownedByFabrica;
     }
 
+    public Inventario getInventarioAsociado() {
+        return inventarioAsociado;
+    }
+
+    public void setInventarioAsociado(Inventario inventarioAsociado) {
+        this.inventarioAsociado = inventarioAsociado;
+    }
+
     public String obtenerInformacion(){
         String informacion = "";
         informacion = informacion +
-                "Nombre: " + getNombre() + "\n" +
+                "Nombre: " + getTipoProducto() + "\n" +
                 "idProducto: " + getIdProducto() + "\n" +
                 "Precio: " + getPrecio() + "\n";
 
@@ -66,7 +77,7 @@ public class Producto {
     @Override
     public String toString() {
         return "Producto{" +
-                "nombre='" + nombre + '\'' +
+                "nombre='" + tipoProducto + '\'' +
                 ", idProducto='" + idProducto + '\'' +
                 ", precio=" + precio +
                 '}';

@@ -1,6 +1,7 @@
 package co.edu.uniquindio.fabricaMadera;
 
 import co.edu.uniquindio.fabricaMadera.model.Fabrica;
+import co.edu.uniquindio.fabricaMadera.model.enumeracion.TipoProducto;
 import co.edu.uniquindio.fabricaMadera.util.CapturaDatosUtil;
 
 import java.util.Scanner;
@@ -18,10 +19,11 @@ public class MainMenu {
 
             switch (opcion) {
                 case 1:
-                    String nombre = CapturaDatosUtil.leerStringConsola("Ingresa el nombre del producto: ");
+                    System.out.println("Ingrese un producto valido: MESA, MUEBLE, SILLA, PUERTA, ESCRITORIO, VIGA");
+                    TipoProducto nombreProducto = TipoProducto.valueOf(CapturaDatosUtil.leerStringConsola("Ingresa el nombre del producto: "));
                     String idProducto = CapturaDatosUtil.leerStringConsola("Ingrese el id del producto: ");
                     double precio = CapturaDatosUtil.leerDoubleConsola("Ingrese el precio del producto: ");
-                    fabrica.crearProducto(nombre, idProducto, precio);
+                    fabrica.crearProducto(nombreProducto, idProducto, precio);
                     break;
 
                 case 2:
@@ -38,9 +40,10 @@ public class MainMenu {
 
                 case 3:
                     idProducto = CapturaDatosUtil.leerStringConsola("Ingresa el id del producto para actualizarlo: ");
-                    nombre = CapturaDatosUtil.leerStringConsola("Ingresa el nuevo nombre del producto: ");
+                    System.out.println("Actualice de acuerdo a los siguientes productos: MESA, MUEBLE, SILLA, PUERTA, ESCRITORIO, VIGA");
+                    nombreProducto = TipoProducto.valueOf(CapturaDatosUtil.leerStringConsola("Ingresa el nuevo nombre del producto: "));
                     precio = CapturaDatosUtil.leerDoubleConsola("Ingresa el nuevo precio del producto: ");
-                    fabrica.actualizarProducto(idProducto, nombre, precio);
+                    fabrica.actualizarProducto(idProducto, nombreProducto, precio);
                     break;
 
                 case 4:

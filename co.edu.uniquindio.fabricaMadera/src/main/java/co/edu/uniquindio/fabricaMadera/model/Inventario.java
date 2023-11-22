@@ -1,6 +1,8 @@
 package co.edu.uniquindio.fabricaMadera.model;
 
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Inventario {
 
@@ -8,6 +10,7 @@ public class Inventario {
     private int cantidad;
     private String ubicacion;
     private String responsable;
+    List<Producto> listaProductos = new ArrayList<>();
     Fabrica ownedByFabrica;
 
     /* Constructor */
@@ -62,5 +65,13 @@ public class Inventario {
 
     public void setOwnedByFabrica(Fabrica ownedByFabrica) {
         this.ownedByFabrica = ownedByFabrica;
+    }
+
+    public List<Producto> getListaProductos() {
+        return listaProductos;
+    }
+
+    public void setListaProductos(List<Producto> listaProductos) {
+        this.listaProductos = listaProductos;
     }
 }

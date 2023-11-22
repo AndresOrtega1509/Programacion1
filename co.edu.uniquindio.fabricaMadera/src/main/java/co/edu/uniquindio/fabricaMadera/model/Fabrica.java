@@ -1,7 +1,6 @@
 package co.edu.uniquindio.fabricaMadera.model;
 
-import co.edu.uniquindio.fabricaMadera.model.enumeracion.ApellidoEmpleado;
-import co.edu.uniquindio.fabricaMadera.model.enumeracion.NombreEmpleado;
+import co.edu.uniquindio.fabricaMadera.model.enumeracion.TipoProducto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,6 +95,7 @@ public class Fabrica {
     public void crearEmpleado(String nombre, String apellido, int edad, String cedula, String email,String cargo, double salario) {
 
         int resultadoBusqueda = devolverPosicionEmpleado(cedula);
+
         if (resultadoBusqueda == -1) {
             Empleado empleado = new Empleado();
             empleado.setNombre(nombre);
@@ -112,6 +112,7 @@ public class Fabrica {
             System.out.println("El empleado ya esta creado en el sistema");
         }
     }
+
 
     /**
      * Metodo que permite obtener la lista de los empleados
@@ -192,17 +193,17 @@ public class Fabrica {
 
     /**
      * Metodo para crear un producto
-     * @param nombre
+     * @param tipoProducto
      * @param idProducto
      * @param precio
      */
 
-    public void crearProducto(String nombre, String idProducto, double precio) {
+    public void crearProducto(TipoProducto tipoProducto, String idProducto, double precio) {
 
         int resultadoBusqueda = devolverPosicionProducto(idProducto);
         if (resultadoBusqueda == -1) {
             Producto producto = new Producto();
-            producto.setNombre(nombre);
+            producto.setTipoProducto(tipoProducto);
             producto.setIdProducto(idProducto);
             producto.setPrecio(precio);
             getListaProductos().add(producto);
@@ -283,13 +284,13 @@ public class Fabrica {
     /**
      * Metodo para actualizar un producto
      * @param idProducto
-     * @param nuevoNombre
+     * @param nuevoProducto
      * @param nuevoPrecio
      */
-    public void actualizarProducto(String idProducto, String nuevoNombre, double nuevoPrecio) {
+    public void actualizarProducto(String idProducto, TipoProducto nuevoProducto, double nuevoPrecio) {
         for (Producto producto : listaProductos){
             if (producto.getIdProducto().equals(idProducto)){
-                producto.setNombre(nuevoNombre);
+                producto.setTipoProducto(nuevoProducto);
                 producto.setPrecio(nuevoPrecio);
                 break;
             }
@@ -359,7 +360,7 @@ public class Fabrica {
         int tamanoLista = listaEmpleados.size();
         for (int i=0; i < tamanoLista; i++){
             Empleado empleado = listaEmpleados.get(i);
-            System.out.println(empleado.toString());
+            System.out.println(empleado.obtenerInformacion());
         }
     }
 }

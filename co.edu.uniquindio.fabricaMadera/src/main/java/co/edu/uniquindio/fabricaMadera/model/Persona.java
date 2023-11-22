@@ -1,8 +1,5 @@
 package co.edu.uniquindio.fabricaMadera.model;
 
-import co.edu.uniquindio.fabricaMadera.model.enumeracion.ApellidoEmpleado;
-import co.edu.uniquindio.fabricaMadera.model.enumeracion.NombreEmpleado;
-
 public class Persona {
 
     private String nombre;
@@ -75,14 +72,5 @@ public class Persona {
         this.ownedByFabrica = ownedByFabrica;
     }
 
-    @Override
-    public String toString() {
-        return "Persona{" +
-                "nombre=" + nombre +
-                ", apellido=" + apellido +
-                ", edad=" + edad +
-                ", cedula='" + cedula + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
+
 }

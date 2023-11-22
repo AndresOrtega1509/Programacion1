@@ -29,18 +29,17 @@ public class Empleado extends Persona{
         informacion = informacion +
                 "Nombre: " + getNombre() + "\n" +
                 "Apellido: " + getApellido() + "\n" +
-                "Edad: " + getEdad() + "\n" ;
+                "Edad: " + getEdad() + "\n" +
+                "Cedula: " + getCedula() + "\n" +
+                "email: " + getEmail() + "\n" +
+                "Cargo: "+ getCargo() + "\n" +
+                "Salario: " + getSalario() + "\n";
+
 
         return informacion;
     }
 
-    @Override
-    public String toString() {
-        return "Empleado{" +
-                "salario=" + salario +
-                ", cargo='" + cargo + '\'' +
-                '}';
-    }
+
 
 
 }
