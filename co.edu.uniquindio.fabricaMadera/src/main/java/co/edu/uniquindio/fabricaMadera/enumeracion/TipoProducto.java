@@ -1,4 +1,4 @@
-package co.edu.uniquindio.fabricaMadera.model.enumeracion;
+package co.edu.uniquindio.fabricaMadera.enumeracion;
 
 public enum TipoProducto {
     MUEBLE, PUERTA, MESA, SILLA, VIGA, ESCRITORIO

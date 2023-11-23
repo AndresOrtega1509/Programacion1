@@ -1,7 +1,7 @@
 package co.edu.uniquindio.fabricaMadera;
 
 import co.edu.uniquindio.fabricaMadera.model.Fabrica;
-import co.edu.uniquindio.fabricaMadera.model.enumeracion.TipoProducto;
+import co.edu.uniquindio.fabricaMadera.enumeracion.TipoProducto;
 import co.edu.uniquindio.fabricaMadera.util.CapturaDatosUtil;
 
 import java.util.Date;
@@ -126,49 +126,64 @@ public class MainMenu {
                     break;
 
                 case 16:
+                    cantidad = CapturaDatosUtil.leerIntConsola("Ingrese la cantidad del producto del inventario para eliminarlo: ");
+                    fabrica.eliminarInventario(cantidad);
+                    break;
+                case 17:
                     codigo = CapturaDatosUtil.leerStringConsola("Ingrese el codigo del turno para eliminarlo: ");
                     fabrica.eliminarTurno(codigo);
                     break;
 
-                case 17:
-                    fabrica.calcularValorHorasExtraPrimerEmpleado();
-                    break;
-
                 case 18:
-                    fabrica.obtenerPromedioEdad();
+                    idProducto = CapturaDatosUtil.leerStringConsola("Ingrese el id del producto para consultar su información: ");
+                    fabrica.consultarProducto(idProducto);
                     break;
-
                 case 19:
-                    fabrica.obtenerSalarioMayor();
+                    cedulaEmpleado = CapturaDatosUtil.leerStringConsola("Ingrese la cedula del empleado para consultar su información: ");
+                    fabrica.consultarEmpleado(cedulaEmpleado);
                     break;
-
                 case 20:
-                    fabrica.obtenerSalarioMenor();
+                    codigoReferencia = CapturaDatosUtil.leerStringConsola("Ingrese el codigo de referencia del inventario para consultar su información");
+                    fabrica.consultarInventario(codigoReferencia);
                     break;
-
                 case 21:
-                    fabrica.obtenerProductoMenorPrecio();
+                    codigo = CapturaDatosUtil.leerStringConsola("Ingrese el codigo del turno para consultar su información: ");
+                    fabrica.consultarTurno(codigo);
                     break;
 
                 case 22:
-                    fabrica.mostrarInformacionPrimerProducto();
+                    fabrica.calcularValorHorasExtraPrimerEmpleado();
                     break;
 
                 case 23:
-                    idProducto = CapturaDatosUtil.leerStringConsola("Ingrese el id del producto para buscar en la lista: ");
-                    fabrica.obtenerProductoPorId(idProducto);
+                    fabrica.obtenerPromedioEdad();
+                    break;
 
                 case 24:
+                    fabrica.obtenerSalarioMayor();
+                    break;
+
+                case 25:
+                    fabrica.obtenerSalarioMenor();
+                    break;
+
+                case 26:
+                    fabrica.obtenerProductoMenorPrecio();
+                    break;
+
+                case 27:
+                    fabrica.mostrarInformacionPrimerProducto();
+                    break;
+
+                case 28:
                     fabrica.obtenerProductoMayorCantidadInventario();
                     break;
 
-
-
-                case 25:
+                case 29:
                     System.out.println("El usuario ha salido del sistema.");
                     break;
             }
-            if(opcion == 25) {
+            if(opcion == 29) {
                 break;
             }
         }
@@ -191,15 +206,20 @@ public class MainMenu {
         System.out.println("13. Eliminar producto");
         System.out.println("14. Eliminar empleado");
         System.out.println("15. Eliminar inventario");
-        System.out.println("16. Eliminar turno");
-        System.out.println("17. obtener valor total hora extra primer empleado");
-        System.out.println("18. obtener el promedio de edad de los empleados");
-        System.out.println("19. obtener el salario mayor de los empleados");
-        System.out.println("20. obtener el salario menor de los empleados");
-        System.out.println("21. obtener el producto de menor precio");
-        System.out.println("22. mostrar el primer producto de la lista");
-        System.out.println("23. obtener el producto con menor cantidad en el inventario");
-        System.out.println("24. Salir");
+        System.out.println("16. Eliminar inventario por cantidad del producto");
+        System.out.println("17. Eliminar turno");
+        System.out.println("18. consultar producto");
+        System.out.println("19. consultar empleado");
+        System.out.println("20. consultar inventario");
+        System.out.println("21. consultar turno");
+        System.out.println("22. obtener valor total hora extra primer empleado");
+        System.out.println("23. obtener el promedio de edad de los empleados");
+        System.out.println("24. obtener el salario mayor de los empleados");
+        System.out.println("25. obtener el salario menor de los empleados");
+        System.out.println("26. obtener el producto de menor precio");
+        System.out.println("27. mostrar el primer producto de la lista");
+        System.out.println("28. obtener el producto con menor cantidad en el inventario");
+        System.out.println("29. Salir");
         System.out.print("Selecciona una opción: ");
     }
 

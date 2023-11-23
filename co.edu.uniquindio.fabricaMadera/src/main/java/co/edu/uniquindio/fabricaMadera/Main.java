@@ -1,8 +1,7 @@
 package co.edu.uniquindio.fabricaMadera;
 import co.edu.uniquindio.fabricaMadera.model.*;
-import co.edu.uniquindio.fabricaMadera.model.enumeracion.TipoProducto;
+import co.edu.uniquindio.fabricaMadera.enumeracion.TipoProducto;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -34,14 +33,15 @@ public class Main {
         System.out.println("-----> Informacion luego de actualizar: ");
         mostrarInformacionEmpleados(fabrica);
 
-        int promedioEdad = fabrica.obtenerPromedioEdad();
-        System.out.println("El promedio de edad de los empleados es de: " + promedioEdad);
+        //Consultar
+        System.out.println("-----> Informacion luego de consultar: ");
+        consultarEmpleado("1093983821", fabrica);
 
-        double salarioMayor = fabrica.obtenerSalarioMayor();
-        System.out.println("El salario mayor es de: " + salarioMayor);
+        fabrica.obtenerPromedioEdad();
 
-        System.out.println("Información de cada empleado: ");
-        mostraInformacionEmpleado(fabrica);
+        fabrica.obtenerSalarioMayor();
+
+        fabrica.obtenerSalarioMenor();
 
         //Crud producto
 
@@ -66,11 +66,12 @@ public class Main {
         System.out.println("-----> Informacion luego de actualizar: ");
         mostrarInformacionProductos(fabrica);
 
-        TipoProducto productoPrecioMenor = fabrica.obtenerProductoMenorPrecio();
-        System.out.println("El producto con el precio más bajo es de: " + productoPrecioMenor);
+        fabrica.obtenerProductoMenorPrecio();
+        fabrica.mostrarInformacionPrimerProducto();
 
-        String obtenerProductoPorId = fabrica.obtenerProductoPorId("7603");
-        System.out.println(obtenerProductoPorId);
+        //Consultar
+        System.out.println("-----> Informacion luego de consultar: ");
+        consultarProducto("4833", fabrica);
 
         fabrica.mostrarInformacionPrimerProducto();
 
@@ -92,13 +93,20 @@ public class Main {
         System.out.println("-----> Información luego de eliminar");
         mostrarInformacionInventario(fabrica);
 
+        eliminarInventario(48, fabrica);
+        System.out.println("-----> Información luego de eliminar");
+        mostrarInformacionInventario(fabrica);
+
         //Update
         actualizarInventario("1023", TipoProducto.ESCRITORIO,32,"almacen de materias prima","Gustavo Perez" , fabrica);
         System.out.println("-----> Informacion luego de actualizar: ");
         mostrarInformacionInventario(fabrica);
 
-        String productoMayorCantidad = fabrica.obtenerProductoMayorCantidadInventario();
-        System.out.println("El producto con mayor cantidad en el inventario es: " + productoMayorCantidad);
+        fabrica.obtenerProductoMayorCantidadInventario();
+
+        //Consultar
+        System.out.println("-----> Informacion luego de consultar: ");
+        consultarInventario("1023", fabrica);
 
         //Crud turno
 
@@ -110,7 +118,7 @@ public class Main {
         crearTurno("1016745323", new Date(2023, 5, 7, 6, 30), new Date(2023, 5, 7, 13, 30), 30000, "05",fabrica);
 
         //Read
-        System.out.println("Información inventario:");
+        System.out.println("Información Turnos:");
         mostrarInformacionTurnos(fabrica);
 
         //Delate
@@ -123,6 +131,18 @@ public class Main {
         System.out.println("-----> Informacion luego de actualizar: ");
         mostrarInformacionTurnos(fabrica);
 
+        //Consultar
+        System.out.println("-----> Informacion luego de consultar: ");
+        consultarTurno("05", fabrica);
+
+        fabrica.calcularValorHorasExtraPrimerEmpleado();
+    }
+
+    private static Fabrica inicializarDatosPrueba() {
+        Fabrica fabrica = new Fabrica();
+        fabrica.setNombre("Maderas del centro S.A.S");
+        fabrica.setDireccion("Carrera 19 calle 14, Armenia");
+        return fabrica;
     }
 
     private static void actualizarTurno(String codigo, Date horaEntrada, Date horaSalida, String cedula, double valorHoraExtra, Fabrica fabrica) {
@@ -160,6 +180,11 @@ public class Main {
         fabrica.eliminarInventario(codigoReferencia);
     }
 
+    private static void eliminarInventario(int cantidad, Fabrica fabrica) {
+
+        fabrica.eliminarInventario(cantidad);
+    }
+
     private static void mostrarInformacionInventario(Fabrica fabrica) {
 
         List<Inventario> listaInventario = fabrica.obtenerInventario();
@@ -179,13 +204,6 @@ public class Main {
             Empleado empleado = listaEmpleados.get(i);
             System.out.println(empleado.obtenerInformacion());
         }
-    }
-
-    private static Fabrica inicializarDatosPrueba() {
-        Fabrica fabrica = new Fabrica();
-        fabrica.setNombre("Maderas del centro S.A.S");
-        fabrica.setDireccion("Carrera 19 calle 14, Armenia");
-        return fabrica;
     }
 
     private static void crearProducto(TipoProducto tipoProducto, String idProducto, double precio, Fabrica fabrica) {
@@ -240,5 +258,21 @@ public class Main {
 
     private static void actualizarEmpleado(String cedula, String nombre, String apellido, int edad, String email,String cargo, double salario, Fabrica fabrica) {
         fabrica.actualizarEmpleado(cedula, nombre, apellido, edad, email ,cargo, salario);
+    }
+
+    private static void consultarEmpleado(String cedula, Fabrica fabrica) {
+
+        fabrica.consultarEmpleado(cedula);
+    }
+
+    private static void consultarInventario(String codigoReferencia, Fabrica fabrica) {
+
+        fabrica.consultarInventario(codigoReferencia);
+    }
+    private static void consultarProducto(String idProducto, Fabrica fabrica) {
+        fabrica.consultarProducto(idProducto);
+    }
+    private static void consultarTurno(String codigo, Fabrica fabrica) {
+        fabrica.consultarTurno(codigo);
     }
 }

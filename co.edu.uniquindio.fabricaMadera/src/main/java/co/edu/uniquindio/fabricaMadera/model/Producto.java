@@ -1,6 +1,6 @@
 package co.edu.uniquindio.fabricaMadera.model;
 
-import co.edu.uniquindio.fabricaMadera.model.enumeracion.TipoProducto;
+import co.edu.uniquindio.fabricaMadera.enumeracion.TipoProducto;
 
 public class Producto {
 

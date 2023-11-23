@@ -4,7 +4,7 @@ import co.edu.uniquindio.fabricaMadera.model.Empleado;
 import co.edu.uniquindio.fabricaMadera.model.Inventario;
 import co.edu.uniquindio.fabricaMadera.model.Producto;
 import co.edu.uniquindio.fabricaMadera.model.Turno;
-import co.edu.uniquindio.fabricaMadera.model.enumeracion.TipoProducto;
+import co.edu.uniquindio.fabricaMadera.enumeracion.TipoProducto;
 
 import java.util.Date;
 import java.util.List;
@@ -30,16 +30,16 @@ public interface IFabrica {
     public void mostrarEmpleados();
     public void mostrarInventario();
     public void mostrarTurno();
-    public int obtenerPromedioEdad();
-    public double obtenerSalarioMayor();
-    public double obtenerSalarioMenor();
-    public TipoProducto obtenerProductoMenorPrecio();
+    public void obtenerPromedioEdad();
+    public void obtenerSalarioMayor();
+    public void obtenerSalarioMenor();
+    public void obtenerProductoMenorPrecio();
     public void mostrarInformacionPrimerProducto();
-    public String obtenerProductoMayorCantidadInventario();
+    public void obtenerProductoMayorCantidadInventario();
     public void calcularValorHorasExtraPrimerEmpleado();
-    public String obtenerProductoPorId(String idProducto);
-
+    public void consultarProducto(String idProducto);
+    public void consultarEmpleado(String cedulaEmpleado);
+    public void consultarInventario(String codigoReferencia);
+    public void consultarTurno(String codigo);
 
 }
-
-
