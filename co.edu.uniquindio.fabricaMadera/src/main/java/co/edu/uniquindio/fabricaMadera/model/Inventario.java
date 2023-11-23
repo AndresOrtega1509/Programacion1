@@ -1,13 +1,19 @@
 package co.edu.uniquindio.fabricaMadera.model;
 
 
+import co.edu.uniquindio.fabricaMadera.enumeracion.TipoProducto;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Inventario {
 
-    private String producto;
+    private TipoProducto tipoProducto;
     private int cantidad;
     private String ubicacion;
     private String responsable;
+    private String codigoReferencia;
+    List<Producto> listaProductos = new ArrayList<>();
     Fabrica ownedByFabrica;
 
     /* Constructor */
@@ -15,21 +21,22 @@ public class Inventario {
     public Inventario() {
     }
 
-    public Inventario(String producto, int cantidad, String ubicacion, String responsable) {
-        this.producto = producto;
+    public Inventario(TipoProducto tipoProducto, int cantidad, String ubicacion, String responsable, String codigoReferencia) {
+        this.tipoProducto = tipoProducto;
         this.cantidad = cantidad;
         this.ubicacion = ubicacion;
         this.responsable = responsable;
+        this.codigoReferencia = codigoReferencia;
     }
 
     /* Getters and Setters */
 
-    public String getProducto() {
-        return producto;
+    public TipoProducto getTipoProducto() {
+        return tipoProducto;
     }
 
-    public void setProducto(String producto) {
-        this.producto = producto;
+    public void setTipoProducto(TipoProducto tipoProducto) {
+        this.tipoProducto = tipoProducto;
     }
 
     public int getCantidad() {
@@ -62,5 +69,34 @@ public class Inventario {
 
     public void setOwnedByFabrica(Fabrica ownedByFabrica) {
         this.ownedByFabrica = ownedByFabrica;
+    }
+
+    public List<Producto> getListaProductos() {
+        return listaProductos;
+    }
+
+    public void setListaProductos(List<Producto> listaProductos) {
+        this.listaProductos = listaProductos;
+    }
+
+    public String getCodigoReferencia() {
+        return codigoReferencia;
+    }
+
+    public void setCodigoReferencia(String codigoReferencia) {
+        this.codigoReferencia = codigoReferencia;
+    }
+
+    public String obtenerInformacion() {
+
+        String informacion = "";
+        informacion = informacion +
+                "Nombre: " + getTipoProducto() + "\n" +
+                "Cantidad: " + getCantidad() + "\n" +
+                "Ubicación: " + getUbicacion()+ "\n" +
+                "Responsable: " + getResponsable() + "\n" +
+                "Codigo referencia: " + getCodigoReferencia() + "\n";
+
+        return informacion;
     }
 }
