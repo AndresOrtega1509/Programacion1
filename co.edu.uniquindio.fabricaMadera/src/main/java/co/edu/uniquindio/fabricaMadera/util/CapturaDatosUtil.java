@@ -15,17 +15,41 @@ public class CapturaDatosUtil {
     }
 
     public static int leerIntConsola(String mensaje) {
-        System.out.println(mensaje);
         Scanner scanner = new Scanner(System.in);
-        String dato = scanner.nextLine();
-        return Integer.parseInt(dato);
+        int resultado = 0;
+        boolean entradaValida = false;
+
+        while (!entradaValida) {
+            System.out.println(mensaje);
+            try {
+                String dato = scanner.nextLine();
+                resultado = Integer.parseInt(dato);
+                entradaValida = true; // Si llegamos aquí, la entrada es válida
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Ingrese un número entero válido.");
+            }
+        }
+
+        return resultado;
     }
 
     public static double leerDoubleConsola(String mensaje) {
-        System.out.println(mensaje);
         Scanner scanner = new Scanner(System.in);
-        String dato = scanner.nextLine();
-        return Double.parseDouble(dato);
+        double resultado = 0;
+        boolean entradaValida = false;
+
+        while (!entradaValida) {
+            System.out.println(mensaje);
+            try {
+                String dato = scanner.nextLine();
+                resultado = Double.parseDouble(dato);
+                entradaValida = true;
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Ingrese un número double válido.");
+            }
+        }
+
+        return resultado;
     }
 
     public static Date leerFechaConsola(String mensaje) {
@@ -33,6 +57,7 @@ public class CapturaDatosUtil {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
         while (true) {
+            System.out.println(mensaje);
             try {
                 System.out.print("Ingrese el año: ");
                 int year = Integer.parseInt(scanner.nextLine());

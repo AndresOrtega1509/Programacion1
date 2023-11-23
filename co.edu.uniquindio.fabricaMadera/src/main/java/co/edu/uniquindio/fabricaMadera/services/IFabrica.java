@@ -32,10 +32,12 @@ public interface IFabrica {
     public void mostrarTurno();
     public int obtenerPromedioEdad();
     public double obtenerSalarioMayor();
-    public double obtenerProductoMenorPrecio();
+    public double obtenerSalarioMenor();
+    public TipoProducto obtenerProductoMenorPrecio();
     public void mostrarInformacionPrimerProducto();
-    public String obtenerProductoMayorCantidad();
+    public String obtenerProductoMayorCantidadInventario();
     public void calcularValorHorasExtraPrimerEmpleado();
+    public String obtenerProductoPorId(String idProducto);
 
 
 }

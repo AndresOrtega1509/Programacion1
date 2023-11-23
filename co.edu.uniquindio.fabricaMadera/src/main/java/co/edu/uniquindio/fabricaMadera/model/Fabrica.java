@@ -552,17 +552,32 @@ public class Fabrica implements IFabrica {
         return salarioMayor;
     }
 
+    @Override
+    public double obtenerSalarioMenor() {
+        double salarioMenor = getListaEmpleados().get(0).getSalario();
+
+        for (int i = 0; i < getListaEmpleados().size(); i++){
+            if (getListaEmpleados().get(i).getSalario() < salarioMenor){
+                salarioMenor = getListaEmpleados().get(i).getSalario();
+
+            }
+        }
+        return salarioMenor;
+    }
+
     /**
      * Metodo para obtener el producto de menor precio
-     * @return double
+     * @return TipoProducto
      */
     @Override
-    public double obtenerProductoMenorPrecio() {
-        double productoMenorPrecio = getListaProductos().get(0).getPrecio();
+    public TipoProducto obtenerProductoMenorPrecio() {
+        double precio = getListaProductos().get(0).getPrecio();
+        TipoProducto productoMenorPrecio = null;
 
-        for (int i = 0; i < getListaProductos().size(); i++){
-            if (getListaProductos().get(i).getPrecio() < productoMenorPrecio){
-                productoMenorPrecio = getListaProductos().get(i).getPrecio();
+        for (Producto producto : listaProductos) {
+            if (producto.getPrecio() < precio){
+                precio = producto.getPrecio();
+                productoMenorPrecio = producto.getTipoProducto();
             }
         }
         return productoMenorPrecio;
@@ -573,7 +588,7 @@ public class Fabrica implements IFabrica {
      */
     @Override
     public void mostrarInformacionPrimerProducto() {
-        Producto primerProducto =getListaProductos().get(0);
+        Producto primerProducto = getListaProductos().get(0);
         System.out.println("Informacion del primer producto: " + primerProducto.obtenerInformacion());
 
     }
@@ -583,7 +598,7 @@ public class Fabrica implements IFabrica {
      * @return String
      */
     @Override
-    public String obtenerProductoMayorCantidad() {
+    public String obtenerProductoMayorCantidadInventario() {
         int cantidadMayor = listaInventario.get(0).getCantidad();
         String productoMayor = "";
 
@@ -608,6 +623,18 @@ public class Fabrica implements IFabrica {
         duracion = (long) (valorHoraExtra * duracion);
 
         System.out.println("El valor total de las horas extra son: " + duracion);
+
+    }
+
+    @Override
+    public String obtenerProductoPorId(String idProducto) {
+        String tipoProducto = "";
+        for (Producto producto: listaProductos) {
+            if (producto.getIdProducto().equalsIgnoreCase(idProducto)){
+                tipoProducto = producto.obtenerInformacion();
+            }
+        }
+        return tipoProducto;
 
     }
 }

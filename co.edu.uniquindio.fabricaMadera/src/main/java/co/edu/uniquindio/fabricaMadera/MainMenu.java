@@ -50,9 +50,7 @@ public class MainMenu {
 
                 case 4:
                     String cedula = CapturaDatosUtil.leerStringConsola("Ingrese la cedula del empleado para asociar turno: ");
-                    System.out.println("Ingrese la fecha de entrada del empleado:");
                     Date horaEntrada = CapturaDatosUtil.leerFechaConsola("Ingrese la fecha de entrada del empleado: ");
-                    System.out.println("Ingrese la fecha de salida del empleado:");
                     Date horaSalida = CapturaDatosUtil.leerFechaConsola("Ingrese la fecha de salida del empleado: ");
                     double valorHoraExtra = CapturaDatosUtil.leerDoubleConsola("Ingrese el valor de la hora extra");
                     String codigo = CapturaDatosUtil.leerStringConsola("Ingrese el codigo del turno: ");
@@ -137,11 +135,40 @@ public class MainMenu {
                     break;
 
                 case 18:
-                    System.out.println("El usuario ha salido del sistema.");
+                    fabrica.obtenerPromedioEdad();
                     break;
 
+                case 19:
+                    fabrica.obtenerSalarioMayor();
+                    break;
+
+                case 20:
+                    fabrica.obtenerSalarioMenor();
+                    break;
+
+                case 21:
+                    fabrica.obtenerProductoMenorPrecio();
+                    break;
+
+                case 22:
+                    fabrica.mostrarInformacionPrimerProducto();
+                    break;
+
+                case 23:
+                    idProducto = CapturaDatosUtil.leerStringConsola("Ingrese el id del producto para buscar en la lista: ");
+                    fabrica.obtenerProductoPorId(idProducto);
+
+                case 24:
+                    fabrica.obtenerProductoMayorCantidadInventario();
+                    break;
+
+
+
+                case 25:
+                    System.out.println("El usuario ha salido del sistema.");
+                    break;
             }
-            if(opcion == 18) {
+            if(opcion == 25) {
                 break;
             }
         }
@@ -166,7 +193,13 @@ public class MainMenu {
         System.out.println("15. Eliminar inventario");
         System.out.println("16. Eliminar turno");
         System.out.println("17. obtener valor total hora extra primer empleado");
-        System.out.println("18. Salir");
+        System.out.println("18. obtener el promedio de edad de los empleados");
+        System.out.println("19. obtener el salario mayor de los empleados");
+        System.out.println("20. obtener el salario menor de los empleados");
+        System.out.println("21. obtener el producto de menor precio");
+        System.out.println("22. mostrar el primer producto de la lista");
+        System.out.println("23. obtener el producto con menor cantidad en el inventario");
+        System.out.println("24. Salir");
         System.out.print("Selecciona una opción: ");
     }
 

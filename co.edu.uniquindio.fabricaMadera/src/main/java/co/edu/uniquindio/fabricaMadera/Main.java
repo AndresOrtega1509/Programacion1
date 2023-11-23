@@ -49,7 +49,7 @@ public class Main {
         crearProducto(TipoProducto.MUEBLE, "2809",1300000, fabrica);
         crearProducto(TipoProducto.PUERTA, "3201", 560000, fabrica);
         crearProducto(TipoProducto.MESA, "8403", 420000, fabrica);
-        crearProducto(TipoProducto.SILLA, "7603", 70000, fabrica);
+        crearProducto(TipoProducto.SILLA, "7603", 700, fabrica);
         crearProducto(TipoProducto.VIGA, "4833", 60000, fabrica);
 
         //Read
@@ -66,8 +66,11 @@ public class Main {
         System.out.println("-----> Informacion luego de actualizar: ");
         mostrarInformacionProductos(fabrica);
 
-        double productoPrecioMenor = fabrica.obtenerProductoMenorPrecio();
+        TipoProducto productoPrecioMenor = fabrica.obtenerProductoMenorPrecio();
         System.out.println("El producto con el precio más bajo es de: " + productoPrecioMenor);
+
+        String obtenerProductoPorId = fabrica.obtenerProductoPorId("7603");
+        System.out.println(obtenerProductoPorId);
 
         fabrica.mostrarInformacionPrimerProducto();
 
@@ -94,7 +97,7 @@ public class Main {
         System.out.println("-----> Informacion luego de actualizar: ");
         mostrarInformacionInventario(fabrica);
 
-        String productoMayorCantidad = fabrica.obtenerProductoMayorCantidad();
+        String productoMayorCantidad = fabrica.obtenerProductoMayorCantidadInventario();
         System.out.println("El producto con mayor cantidad en el inventario es: " + productoMayorCantidad);
 
         //Crud turno
