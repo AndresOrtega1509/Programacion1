@@ -112,26 +112,37 @@ public class MainMenu {
 
                 case 13:
                     idProducto = CapturaDatosUtil.leerStringConsola("Ingrese el id del producto para eliminarlo: ");
-                    fabrica.eliminarProducto(idProducto);
+                    System.out.println("¿Esta seguro que desea eliminar el producto? \n");
+                    String confirmacion = CapturaDatosUtil.leerStringConsola("si desea eliminarlo, ingrese: si, de lo contrario ingrese: no");
+                    fabrica.eliminarProducto(idProducto, confirmacion);
                     break;
 
                 case 14:
                     cedulaEmpleado = CapturaDatosUtil.leerStringConsola("Ingrese la cedula del empleado para eliminar: ");
-                    fabrica.eliminarEmpleado(cedulaEmpleado);
+                    System.out.println("¿Esta seguro que desea eliminar el empleado? \n");
+                    confirmacion = CapturaDatosUtil.leerStringConsola("si desea eliminarlo, ingrese: si, de lo contrario ingrese: no");
+                    fabrica.eliminarEmpleado(cedulaEmpleado, confirmacion);
                     break;
 
                 case 15:
                     codigoReferencia = CapturaDatosUtil.leerStringConsola("Ingrese el codigo de referencia del inventario para eliminar: ");
-                    fabrica.eliminarInventario(codigoReferencia);
+                    System.out.println("¿Esta seguro que desea eliminar el inventario? \n");
+                    confirmacion = CapturaDatosUtil.leerStringConsola("si desea eliminarlo, ingrese: si, de lo contrario ingrese: no");
+                    fabrica.eliminarInventario(codigoReferencia, confirmacion);
                     break;
 
                 case 16:
                     cantidad = CapturaDatosUtil.leerIntConsola("Ingrese la cantidad del producto del inventario para eliminarlo: ");
-                    fabrica.eliminarInventario(cantidad);
+                    System.out.println("¿Esta seguro que desea eliminar el inventario? \n");
+                    confirmacion = CapturaDatosUtil.leerStringConsola("si desea eliminarlo, ingrese: si, de lo contrario ingrese: no");
+                    fabrica.eliminarInventario(cantidad, confirmacion);
                     break;
+                    
                 case 17:
                     codigo = CapturaDatosUtil.leerStringConsola("Ingrese el codigo del turno para eliminarlo: ");
-                    fabrica.eliminarTurno(codigo);
+                    System.out.println("¿Esta seguro que desea eliminar el turno? \n");
+                    confirmacion = CapturaDatosUtil.leerStringConsola("si desea eliminarlo, ingrese: si, de lo contrario ingrese: no");
+                    fabrica.eliminarTurno(codigo, confirmacion);
                     break;
 
                 case 18:

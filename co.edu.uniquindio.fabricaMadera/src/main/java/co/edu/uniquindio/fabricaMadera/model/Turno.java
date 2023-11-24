@@ -84,6 +84,10 @@ public class Turno {
         this.empleadoAsociado = empleadoAsociado;
     }
 
+    /**
+     * Metodo para calcular las horas extra trabajadas por el empleado
+     * @return long
+     */
     public long calcularDuracion() {
         long duracionMili = horaSalida.getTime() - horaEntrada.getTime();
 
@@ -96,6 +100,11 @@ public class Turno {
         return duracionMili;
     }
 
+    /**
+     * Metodo para convertir los milisegundos a horas
+     * @param duracionMili
+     * @return long
+     */
     private long convertirMiliAHoras(long duracionMili) {
 
         long horas = 0;
@@ -105,6 +114,10 @@ public class Turno {
         return horas;
     }
 
+    /**
+     * Metodo para obtener la informacion del turno
+     * @return string
+     */
     public String obtenerInformacion() {
 
         String informacion = "";
