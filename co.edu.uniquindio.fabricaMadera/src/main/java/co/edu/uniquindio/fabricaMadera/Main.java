@@ -24,7 +24,7 @@ public class Main {
         mostrarInformacionEmpleados(fabrica);
 
         //Delate
-        eliminarEmpleado("1082748329", fabrica);
+        eliminarEmpleado("1082748329", "no", fabrica);
         System.out.println("-----> Información luego de eliminar");
         mostrarInformacionEmpleados(fabrica);
 
@@ -57,7 +57,7 @@ public class Main {
         mostrarInformacionProductos(fabrica);
 
         //Delate
-        eliminarProducto("3201", fabrica);
+        eliminarProducto("3201", "si",fabrica);
         System.out.println("-----> Información luego de eliminar");
         mostrarInformacionProductos(fabrica);
 
@@ -89,11 +89,11 @@ public class Main {
         mostrarInformacionInventario(fabrica);
 
         //Delate
-        eliminarInventario("9483", fabrica);
+        eliminarInventario("9483", "si",fabrica);
         System.out.println("-----> Información luego de eliminar");
         mostrarInformacionInventario(fabrica);
 
-        eliminarInventario(48, fabrica);
+        eliminarInventario(48, "si",fabrica);
         System.out.println("-----> Información luego de eliminar");
         mostrarInformacionInventario(fabrica);
 
@@ -122,7 +122,7 @@ public class Main {
         mostrarInformacionTurnos(fabrica);
 
         //Delate
-        eliminarTurno("02", fabrica);
+        eliminarTurno("02", "si",fabrica);
         System.out.println("-----> Información luego de eliminar");
         mostrarInformacionTurnos(fabrica);
 
@@ -150,9 +150,9 @@ public class Main {
         fabrica.actualizarTurno(codigo, horaEntrada, horaSalida, valorHoraExtra);
     }
 
-    private static void eliminarTurno(String codigo, Fabrica fabrica) {
+    private static void eliminarTurno(String codigo, String confirmacion,Fabrica fabrica) {
 
-        fabrica.eliminarTurno(codigo);
+        fabrica.eliminarTurno(codigo, confirmacion);
     }
 
     private static void mostrarInformacionTurnos(Fabrica fabrica) {
@@ -175,14 +175,14 @@ public class Main {
         fabrica.actualizarInventario(codigoReferencia, nuevoTipoProducto, nuevaCantidad, ubicacion, nuevoResponsable);
     }
 
-    private static void eliminarInventario(String codigoReferencia, Fabrica fabrica) {
+    private static void eliminarInventario(String codigoReferencia,String confirmacion ,Fabrica fabrica) {
 
-        fabrica.eliminarInventario(codigoReferencia);
+        fabrica.eliminarInventario(codigoReferencia, confirmacion);
     }
 
-    private static void eliminarInventario(int cantidad, Fabrica fabrica) {
+    private static void eliminarInventario(int cantidad, String confirmacion,Fabrica fabrica) {
 
-        fabrica.eliminarInventario(cantidad);
+        fabrica.eliminarInventario(cantidad, confirmacion);
     }
 
     private static void mostrarInformacionInventario(Fabrica fabrica) {
@@ -210,9 +210,9 @@ public class Main {
         fabrica.crearProducto(tipoProducto, idProducto, precio);
     }
 
-    private static void eliminarProducto(String idProducto, Fabrica fabrica) {
+    private static void eliminarProducto(String idProducto, String condirmacion,Fabrica fabrica) {
 
-        fabrica.eliminarProducto(idProducto);
+        fabrica.eliminarProducto(idProducto, condirmacion);
     }
 
     private static void mostrarInformacionProductos(Fabrica fabrica) {
@@ -241,19 +241,9 @@ public class Main {
         fabrica.crearInventario(tipoProducto,cantidad,ubicacion,responsable, codigoReferencia);
     }
 
-    private static void mostraInformacionEmpleado(Fabrica fabrica){
+    private static void eliminarEmpleado(String cedula,String confirmacion ,Fabrica fabrica) {
 
-        List<Empleado> listaEmpleados = fabrica.obtenerEmpleados();
-        int tamanoLista = listaEmpleados.size();
-        for (int i = 0; i < tamanoLista; i ++){
-            Empleado empleado = listaEmpleados.get(i);
-            System.out.println(empleado.obtenerInformacion());
-        }
-    }
-
-    private static void eliminarEmpleado(String cedula, Fabrica fabrica) {
-
-        fabrica.eliminarEmpleado(cedula);
+        fabrica.eliminarEmpleado(cedula, confirmacion);
     }
 
     private static void actualizarEmpleado(String cedula, String nombre, String apellido, int edad, String email,String cargo, double salario, Fabrica fabrica) {

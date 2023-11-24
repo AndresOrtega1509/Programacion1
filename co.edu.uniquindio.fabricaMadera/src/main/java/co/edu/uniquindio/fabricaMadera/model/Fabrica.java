@@ -398,9 +398,9 @@ public class Fabrica implements IFabrica {
      * @param idProducto
      */
     @Override
-    public void eliminarProducto(String idProducto) {
+    public void eliminarProducto(String idProducto, String confirmacion) {
         for(Producto producto : listaProductos){
-            if (producto.getIdProducto().equalsIgnoreCase(idProducto)){
+            if (producto.getIdProducto().equalsIgnoreCase(idProducto) && confirmacion.equalsIgnoreCase("si")){
                 getListaProductos().remove(producto);
                 break;
             }
@@ -412,9 +412,9 @@ public class Fabrica implements IFabrica {
      * @param cedula
      */
     @Override
-    public void eliminarEmpleado(String cedula) {
+    public void eliminarEmpleado(String cedula, String confirmacion) {
         for(Empleado empleado : listaEmpleados){
-            if (empleado.getCedula().equalsIgnoreCase(cedula)){
+            if (empleado.getCedula().equalsIgnoreCase(cedula) && confirmacion.equalsIgnoreCase("si")){
                 getListaEmpleados().remove(empleado);
                 break;
             }
@@ -426,10 +426,10 @@ public class Fabrica implements IFabrica {
      * @param codigoReferencia
      */
     @Override
-    public void eliminarInventario(String codigoReferencia) {
+    public void eliminarInventario(String codigoReferencia, String confirmacion) {
 
         for(Inventario inventario : listaInventario){
-            if (inventario.getCodigoReferencia().equalsIgnoreCase(codigoReferencia)){
+            if (inventario.getCodigoReferencia().equalsIgnoreCase(codigoReferencia) && confirmacion.equalsIgnoreCase("si")){
                 getListaInventario().remove(inventario);
                 break;
             }
@@ -440,10 +440,10 @@ public class Fabrica implements IFabrica {
      * Metodo para eliminar el inventario por la cantidad de productos
      * @param cantidad
      */
-    public void eliminarInventario(int cantidad) {
+    public void eliminarInventario(int cantidad, String confirmacion) {
 
         for(Inventario inventario : listaInventario){
-            if (inventario.getCantidad() == cantidad){
+            if (inventario.getCantidad() == cantidad && confirmacion.equalsIgnoreCase("si")){
                 getListaInventario().remove(inventario);
                 break;
             }
@@ -455,9 +455,9 @@ public class Fabrica implements IFabrica {
      * @param codigo
      */
     @Override
-    public void eliminarTurno(String codigo) {
+    public void eliminarTurno(String codigo, String confirmacion) {
         for(Turno turno : listaTurnos){
-            if (turno.getCodigo().equalsIgnoreCase(codigo)){
+            if (turno.getCodigo().equalsIgnoreCase(codigo) && confirmacion.equalsIgnoreCase("si")){
                 getListaTurnos().remove(turno);
                 break;
             }
@@ -566,7 +566,7 @@ public class Fabrica implements IFabrica {
     /**
      * Metodo para verificar si un empleado ya existe para realizar la transacción
      * @param cedula
-     * @return
+     * @return Empleado
      */
     private Empleado obtenerEmpleado(String cedula) {
 

@@ -22,10 +22,11 @@ public interface IFabrica {
     public void actualizarEmpleado(String cedula, String nombre, String apellido, int edad,String email, String cargo, double salario);
     public void actualizarTurno(String codigo, Date horaEntrada, Date horaSalida, double valorHoraExtra);
     public void actualizarInventario(String codigoReferencia, TipoProducto nuevoTipoProducto, int nuevaCantidad, String nuevaUbicacion , String nuevoResponsable);
-    public void eliminarProducto(String idProducto);
-    public void eliminarEmpleado(String cedula);
-    public void eliminarInventario(String codigoReferencia);
-    public void eliminarTurno(String codigo);
+    public void eliminarProducto(String idProducto, String confirmacion);
+    public void eliminarEmpleado(String cedula, String confirmacion);
+    public void eliminarInventario(String codigoReferencia, String confirmacion);
+    public void eliminarInventario(int cantidad, String confirmacion);
+    public void eliminarTurno(String codigo, String confirmacion);
     public void mostrarProductos();
     public void mostrarEmpleados();
     public void mostrarInventario();
